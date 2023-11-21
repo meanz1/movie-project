@@ -27,7 +27,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-
+	overflow: auto;
 }
 body.no-scroll {
   height: 100%;

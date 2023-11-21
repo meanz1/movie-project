@@ -15,21 +15,26 @@ const CardContainer = styled.div`
 `;
 
 const CardImg = styled.img`
-  width: 160px;
+  width: 180px;
   height: 245px;
   object-fit: cover;
+  border-radius: 8px;
 `;
 
 const CardTitle = styled.span`
-  font-size: 16px;
-  width: 160px;
+  font-size: 14px;
+  width: 180px;
+  height: 32px;
   font-family: SOYOMapleBoldTTF;
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
 `;
 
 function MovieCard({ id, coverImg, title }) {
   return (
     <CardContainer>
-      <CardImg src={coverImg} alt="movie pster" />
+      <CardImg src={coverImg} alt="movie poster" />
       <CardTitle>{title}</CardTitle>
     </CardContainer>
   );

@@ -20,6 +20,8 @@ const TitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   font-family: SOYOMapleBoldTTF;
+  font-size: 40px;
+  color: ${Palette.Yellow};
 `;
 
 const MoviesGrid = styled.div`
@@ -51,7 +53,7 @@ function Home() {
         </>
       ) : (
         <>
-          <TitleContainer>"Movie List"</TitleContainer>
+          <TitleContainer>Movie List</TitleContainer>
           <MoviesGrid>
             {movies.map((elem, id) => (
               <MovieCard
