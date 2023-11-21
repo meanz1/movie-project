@@ -6,7 +6,6 @@ import Palette from "../styles/styleVariable";
 const BgContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${Palette.DarkGray};
   display: flex;
   flex-direction: column;
   align-items: center;

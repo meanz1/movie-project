@@ -1,6 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Movie from "../components/Movie";
+import MovieCard from "../components/MovieCard";
+import styled from "styled-components";
+import Palette from "../styles/styleVariable";
+
+const BgContainer = styled.div`
+  width: 100%;
+
+  background-color: ${Palette.DarkGray};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 function Detail() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
@@ -16,22 +29,20 @@ function Detail() {
     getMovies();
   }, []);
   return (
-    <>
+    <BgContainer>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
         <div>
-          <Movie
+          <MovieCard
             key={movie.id}
             id={movie.id}
             title={movie.title}
             coverImg={movie.medium_cover_image}
-            summary={movie.description_full}
-            genres={movie.genres}
           />
         </div>
       )}
-    </>
+    </BgContainer>
   );
 }
 

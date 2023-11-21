@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Palette from "../styles/styleVariable";
+import { Link } from "react-router-dom";
 
 const CardContainer = styled.div`
   width: 220px;
@@ -19,6 +20,7 @@ const CardImg = styled.img`
   height: 245px;
   object-fit: cover;
   border-radius: 8px;
+  cursor: pointer;
 `;
 
 const CardTitle = styled.span`
@@ -34,7 +36,9 @@ const CardTitle = styled.span`
 function MovieCard({ id, coverImg, title }) {
   return (
     <CardContainer>
-      <CardImg src={coverImg} alt="movie poster" />
+      <Link to={`${process.env.PUBLIC_URL}/movie/${id}`}>
+        <CardImg src={coverImg} alt="movie poster" />
+      </Link>
       <CardTitle>{title}</CardTitle>
     </CardContainer>
   );

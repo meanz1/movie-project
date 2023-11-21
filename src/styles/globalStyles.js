@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Palette from "./styleVariable";
 
 const GlobalStyle = createGlobalStyle`html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -28,6 +29,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	overflow: auto;
+	background-color: ${Palette.DarkGray};
 }
 body.no-scroll {
   height: 100%;
