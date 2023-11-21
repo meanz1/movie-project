@@ -1,6 +1,33 @@
-import Movie from "../components/Movie";
+import MovieCard from "../components/MovieCard";
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import Palette from "../styles/styleVariable";
 
-const { useState, useEffect } = require("react");
+const BgContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: ${Palette.DarkGray};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const TitleContainer = styled.div`
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const MoviesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  margin-bottom: 150px;
+`;
+
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
@@ -16,24 +43,27 @@ function Home() {
     getMovies();
   }, []);
   return (
-    <div>
+    <BgContainer>
       {loading ? (
-        <h1>Loading ...</h1>
+        <>
+          <h1>Loading ...</h1>
+        </>
       ) : (
-        <div>
-          {movies.map((elem) => (
-            <Movie
-              key={elem.id}
-              id={elem.id}
-              title={elem.title}
-              coverImg={elem.medium_cover_image}
-              summary={elem.summary}
-              genres={elem.genres}
-            />
-          ))}
-        </div>
+        <>
+          <TitleContainer>"Movie List"</TitleContainer>
+          <MoviesGrid>
+            {movies.map((elem, id) => (
+              <MovieCard
+                key={elem.id}
+                id={elem.id}
+                title={elem.title}
+                coverImg={elem.medium_cover_image}
+              />
+            ))}
+          </MoviesGrid>
+        </>
       )}
-    </div>
+    </BgContainer>
   );
 }
 

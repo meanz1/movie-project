@@ -28,6 +28,10 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
+body.no-scroll {
+  height: 100%;
+  overflow: hidden;
+}
 ol, ul {
 	list-style: none;
 }
