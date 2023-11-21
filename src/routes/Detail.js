@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 import styled from "styled-components";
-import Palette from "../styles/styleVariable";
+import TitleBanner from "../components/TitleBanner";
 
 const BgContainer = styled.div`
   width: 100%;
-
-  background-color: ${Palette.DarkGray};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,14 +31,15 @@ function Detail() {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div>
+        <>
+          <TitleBanner title={movie.title}></TitleBanner>
           <MovieCard
             key={movie.id}
             id={movie.id}
             title={movie.title}
             coverImg={movie.medium_cover_image}
           />
-        </div>
+        </>
       )}
     </BgContainer>
   );

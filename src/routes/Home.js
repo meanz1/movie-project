@@ -1,7 +1,7 @@
 import MovieCard from "../components/MovieCard";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Palette from "../styles/styleVariable";
+import TitleBanner from "../components/TitleBanner";
 
 const BgContainer = styled.div`
   width: 100%;
@@ -10,17 +10,6 @@ const BgContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const TitleContainer = styled.div`
-  width: 100%;
-  height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: SOYOMapleBoldTTF;
-  font-size: 40px;
-  color: ${Palette.Yellow};
 `;
 
 const MoviesGrid = styled.div`
@@ -52,7 +41,7 @@ function Home() {
         </>
       ) : (
         <>
-          <TitleContainer>Movie List</TitleContainer>
+          <TitleBanner title="Movie List" />
           <MoviesGrid>
             {movies.map((elem, id) => (
               <MovieCard
