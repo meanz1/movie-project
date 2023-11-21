@@ -23,6 +23,7 @@ const CardImg = styled.img`
 const CardTitle = styled.span`
   font-size: 16px;
   width: 160px;
+  font-family: SOYOMapleBoldTTF;
 `;
 
 function MovieCard({ id, coverImg, title }) {
