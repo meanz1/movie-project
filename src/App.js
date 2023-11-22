@@ -1,19 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
+import { createContext, useState } from "react";
+
+export const UserContext = createContext();
 
 function App() {
+  const [minRate, setMinRate] = useState(3);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={`${process.env.PUBLIC_URL}/movie/:id`}
-          element={<Detail />}
-        />
-        <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
-        {/* <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} /> */}
-      </Routes>
-    </BrowserRouter>
+    <UserContext.Provider value={{ minRate, setMinRate }}>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={`${process.env.PUBLIC_URL}/movie/:id`}
+            element={<Detail />}
+          />
+          <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 

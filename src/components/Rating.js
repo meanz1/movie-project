@@ -68,14 +68,14 @@ const RatingItem = styled.a`
   }
 `;
 
-function Rating({ options, setMinRate, minRate }) {
+function Rating({ options, minRate, setMinRate }) {
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
   const handleItmeClick = (option) => {
-    console.log("Selected Option: ", option);
+    console.log("Selected Option: ", option, minRate, setMinRate);
     setMinRate(option);
     setIsOpen(false);
   };

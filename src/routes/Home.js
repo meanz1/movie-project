@@ -1,9 +1,9 @@
 import MovieCard from "../components/MovieCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import TitleBanner from "../components/TitleBanner";
 import Rating from "../components/Rating";
-
+import { UserContext } from "../App";
 const BgContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -23,7 +23,7 @@ const MoviesGrid = styled.div`
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
-  const [minRate, setMinRate] = useState(3);
+  const { minRate, setMinRate } = useContext(UserContext);
 
   const getMovies = async () => {
     const response = await fetch(
@@ -49,13 +49,10 @@ function Home() {
     { id: 9, label: "9" },
     { id: 10, label: "10" },
   ];
+  console.log(setMinRate, minRate);
   return (
     <BgContainer>
-      {loading ? (
-        <>
-          <h1>Loading ...</h1>
-        </>
-      ) : (
+      {loading ? null : (
         <>
           <TitleBanner title="Movie List" />
           <Rating options={options} setMinRate={setMinRate} minRate={minRate} />
