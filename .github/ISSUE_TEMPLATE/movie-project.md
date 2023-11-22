@@ -1,5 +1,5 @@
 ---
-name: "[FE]"
+name: Movie project
 about: movie-project
 title: ''
 labels: ''
