@@ -6,6 +6,7 @@ const Palette = {
   Yellow: "#F8FEB5",
   SkyBlue: "#C5E1DB",
   LightSkyBlue: "#D8EDE7",
+  Font: "SOYOMapleBoldTTF",
 };
 
 export default Palette;

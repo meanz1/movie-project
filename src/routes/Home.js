@@ -2,6 +2,7 @@ import MovieCard from "../components/MovieCard";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import TitleBanner from "../components/TitleBanner";
+import Rating from "../components/Rating";
 
 const BgContainer = styled.div`
   width: 100%;
@@ -22,9 +23,11 @@ const MoviesGrid = styled.div`
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const [minRate, setMinRate] = useState(3);
+
   const getMovies = async () => {
     const response = await fetch(
-      `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
+      `https://yts.mx/api/v2/list_movies.json?minimum_rating=${minRate}&sort_by=year`
     );
     const json = await response.json();
     setMovies(json.data.movies);
@@ -32,7 +35,20 @@ function Home() {
   };
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [minRate]);
+
+  const options = [
+    { id: 1, label: "1" },
+    { id: 2, label: "2" },
+    { id: 3, label: "3" },
+    { id: 4, label: "4" },
+    { id: 5, label: "5" },
+    { id: 6, label: "6" },
+    { id: 7, label: "7" },
+    { id: 8, label: "8" },
+    { id: 9, label: "9" },
+    { id: 10, label: "10" },
+  ];
   return (
     <BgContainer>
       {loading ? (
@@ -42,6 +58,7 @@ function Home() {
       ) : (
         <>
           <TitleBanner title="Movie List" />
+          <Rating options={options} setMinRate={setMinRate} minRate={minRate} />
           <MoviesGrid>
             {movies.map((elem, id) => (
               <MovieCard
