@@ -37,7 +37,7 @@ function MovieCard({ id, coverImg, title }) {
   return (
     <CardContainer>
       <Link to={`${process.env.PUBLIC_URL}/movie/${id}`}>
-        <CardImg src={coverImg} alt="movie poster" />
+        <CardImg src={coverImg} alt={`${title}_poster`} />
       </Link>
       <CardTitle>{title}</CardTitle>
     </CardContainer>

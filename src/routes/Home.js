@@ -24,7 +24,6 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const { minRate, setMinRate } = useContext(UserContext);
-
   const getMovies = async () => {
     const response = await fetch(
       `https://yts.mx/api/v2/list_movies.json?minimum_rating=${minRate}&sort_by=year`
@@ -49,7 +48,7 @@ function Home() {
     { id: 9, label: "9" },
     { id: 10, label: "10" },
   ];
-  console.log(setMinRate, minRate);
+
   return (
     <BgContainer>
       {loading ? null : (

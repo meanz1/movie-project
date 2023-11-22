@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createContext, useState } from "react";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
-import { createContext, useState } from "react";
 
 export const UserContext = createContext();
 

@@ -75,7 +75,6 @@ function Rating({ options, minRate, setMinRate }) {
   };
 
   const handleItmeClick = (option) => {
-    console.log("Selected Option: ", option, minRate, setMinRate);
     setMinRate(option);
     setIsOpen(false);
   };
