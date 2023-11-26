@@ -7,6 +7,7 @@ export const UserContext = createContext();
 
 function App() {
   const [minRate, setMinRate] = useState(3);
+
   return (
     <UserContext.Provider value={{ minRate, setMinRate }}>
       <BrowserRouter>

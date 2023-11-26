@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Palette from "../styles/styleVariable";
+import { useState } from "react";
 const SummaryContainer = styled.div`
   height: 275px;
   width: 390px;
@@ -9,6 +10,7 @@ const SummaryContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 20px;
+  cursor: pointer;
 `;
 
 const SummaryText = styled.span`
@@ -16,12 +18,17 @@ const SummaryText = styled.span`
   overflow: auto;
 `;
 
-function SummaryCard({ summary }) {
-  return summary ? (
-    <SummaryContainer>
-      <SummaryText>{summary}</SummaryText>
+function SummaryCard({ summaryEn, summaryKo }) {
+  const [isEnMode, setIsEnMode] = useState(true);
+
+  const changeMode = () => {
+    setIsEnMode(!isEnMode);
+  };
+  return (
+    <SummaryContainer onClick={changeMode}>
+      <SummaryText>{isEnMode ? summaryEn : summaryKo}</SummaryText>
     </SummaryContainer>
-  ) : null;
+  );
 }
 
 export default SummaryCard;

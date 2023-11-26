@@ -14,7 +14,7 @@ const SelectedRating = styled.div`
   background-color: aliceblue;
 
   ${(props) =>
-    !props.isOpen &&
+    !props.open &&
     `
   display: flex;
   justify-content: center;
@@ -48,7 +48,7 @@ const RatingBtn = styled.button`
   font-family: ${Palette.Font};
 `;
 const RatingContent = styled.div`
-  display: ${(props) => (props.isOpen ? "block" : "none")};
+  display: ${(props) => (props.open ? "block" : "none")};
   margin-top: 40px;
   position: absolute;
   background-color: aliceblue;
@@ -82,9 +82,9 @@ function Rating({ options, minRate, setMinRate }) {
   return (
     <RatingContainer>
       <RatingTitle>평점</RatingTitle>
-      <SelectedRating isOpen={isOpen}>
+      <SelectedRating open={isOpen}>
         <MinRateText>{isOpen ? null : minRate}</MinRateText>
-        <RatingContent isOpen={isOpen}>
+        <RatingContent open={isOpen}>
           {options.map((option) => {
             return (
               <RatingItem
