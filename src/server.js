@@ -8,12 +8,6 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
 
 app.post("/translate", async (req, res) => {
   const { text, source, target } = req.body;
@@ -31,7 +25,6 @@ app.post("/translate", async (req, res) => {
       },
       {
         headers: {
-          Accept: "*/*",
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
           "X-Naver-Client-Id": clientId,
           "X-Naver-Client-Secret": clientSecret,
