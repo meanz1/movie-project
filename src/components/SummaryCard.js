@@ -15,6 +15,7 @@ const SummaryContainer = styled.div`
 
 const SummaryText = styled.span`
   font-family: ${Palette.Font};
+  line-height: 1.3;
   overflow: auto;
 `;
 
