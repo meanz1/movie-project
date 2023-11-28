@@ -1,9 +1,9 @@
 import MovieCard from "../components/MovieCard";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import TitleBanner from "../components/TitleBanner";
 import Rating from "../components/Rating";
-import { UserContext } from "../App";
+import { useUserContext } from "../context/rateContext";
 const BgContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -23,7 +23,7 @@ const MoviesGrid = styled.div`
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
-  const { minRate, setMinRate } = useContext(UserContext);
+  const { minRate, dispatchMinRate } = useUserContext();
   const getMovies = async () => {
     const response = await fetch(
       `https://yts.mx/api/v2/list_movies.json?minimum_rating=${minRate}&sort_by=year`
@@ -54,7 +54,7 @@ function Home() {
       {loading ? null : (
         <>
           <TitleBanner title="Movie List" />
-          <Rating options={options} setMinRate={setMinRate} minRate={minRate} />
+          <Rating options={options} />
           <MoviesGrid>
             {movies.map((elem, id) => (
               <MovieCard
