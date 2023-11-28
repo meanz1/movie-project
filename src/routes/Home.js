@@ -1,9 +1,8 @@
 import MovieCard from "../components/MovieCard";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import TitleBanner from "../components/TitleBanner";
 import Rating from "../components/Rating";
-import { UserContext } from "../App";
 import { useUserContext } from "../context/rateContext";
 const BgContainer = styled.div`
   width: 100%;

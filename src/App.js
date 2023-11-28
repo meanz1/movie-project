@@ -1,13 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createContext, useReducer, useState } from "react";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
-import rateReducer from "./reducers/rateReducer";
 import { UserContextProvider } from "./context/rateContext";
 
 function App() {
-  // const [minRate, setMinRate] = useState(3);
-
   return (
     <UserContextProvider>
       <BrowserRouter>
