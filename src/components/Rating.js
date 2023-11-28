@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Palette from "../styles/styleVariable";
+import { useUserContext } from "../context/rateContext";
 
 const RatingContainer = styled.div`
   margin-bottom: 30px;
@@ -68,14 +69,15 @@ const RatingItem = styled.a`
   }
 `;
 
-function Rating({ options, minRate, setMinRate }) {
+function Rating({ options }) {
+  const { minRate, dispatchMinRate } = useUserContext();
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
   const handleItmeClick = (option) => {
-    setMinRate(option);
+    dispatchMinRate({ type: "SET_MIN_RATE", payload: option });
     setIsOpen(false);
   };
 

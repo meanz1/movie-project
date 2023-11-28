@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
-
-export const UserContext = createContext();
+import rateReducer from "./reducers/rateReducer";
+import { UserContextProvider } from "./context/rateContext";
 
 function App() {
-  const [minRate, setMinRate] = useState(3);
+  // const [minRate, setMinRate] = useState(3);
 
   return (
-    <UserContext.Provider value={{ minRate, setMinRate }}>
+    <UserContextProvider>
       <BrowserRouter>
         <Routes>
           <Route
@@ -19,7 +19,7 @@ function App() {
           <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
         </Routes>
       </BrowserRouter>
-    </UserContext.Provider>
+    </UserContextProvider>
   );
 }
 
