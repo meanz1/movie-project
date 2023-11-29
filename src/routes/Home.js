@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import TitleBanner from "../components/TitleBanner";
 import Rating from "../components/Rating";
-import { useUserContext } from "../context/rateContext";
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 const BgContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -21,9 +21,10 @@ const MoviesGrid = styled.div`
 `;
 
 function Home() {
+  const minRate = useSelector((state) => state.rate);
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
-  const { minRate, dispatchMinRate } = useUserContext();
+
   const getMovies = async () => {
     const response = await fetch(
       `https://yts.mx/api/v2/list_movies.json?minimum_rating=${minRate}&sort_by=year`

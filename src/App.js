@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
-import { UserContextProvider } from "./context/rateContext";
-
+import { Provider } from "react-redux";
+import store from "./store";
 function App() {
   return (
-    <UserContextProvider>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route
@@ -15,7 +15,7 @@ function App() {
           <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
         </Routes>
       </BrowserRouter>
-    </UserContextProvider>
+    </Provider>
   );
 }
 
