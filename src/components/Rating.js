@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Palette from "../styles/styleVariable";
-import { useUserContext } from "../context/rateContext";
-
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux";
+import { setMinRate } from "../actions";
 const RatingContainer = styled.div`
   margin-bottom: 30px;
   display: flex;
@@ -70,14 +71,15 @@ const RatingItem = styled.a`
 `;
 
 function Rating({ options }) {
-  const { minRate, dispatchMinRate } = useUserContext();
+  const minRate = useSelector((state) => state.rate);
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
   const handleItmeClick = (option) => {
-    dispatchMinRate({ type: "SET_MIN_RATE", payload: option });
+    dispatch(setMinRate(option));
     setIsOpen(false);
   };
 
